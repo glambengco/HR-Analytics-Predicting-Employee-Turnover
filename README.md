@@ -14,7 +14,7 @@ This project used the dataset [Hr Analytics Job Prediction](https://www.kaggle.c
 
 ## Jupyter Notebook
 
-Ful details of the analysis and model development is available in the provided [Jupyter Notebook]().
+Ful details of the analysis and model development is available in the provided [Jupyter Notebook](predicting_employee_turnover.ipynb). Note that GitHub has recurring issues with opening Jupyter Notebooks. To preview the notebook, open the notebook using [NBViewer](https://nbviewer.org/).
 
 ## Project Background
 
@@ -30,28 +30,29 @@ The goal of this project is to predict a machine learning model that predicts wh
 ## Exploratory Data Analysis
 
 The dataset contains 14999 entries of employee data with their reported satisfaction level, last evaluation score, and other work-related data. Employees who left were found to cluster into two groups:
-* Group A - These employees tend to work shorter hours, have slightly low satisfaction levels [(see Figure 1)](#figure-1) and low evaluation scores [(see Figure 2)](#figure-2).
-* Group B - These employees tend to work the longest hours, have very low satisfaction levels [(see Figure 1)](#figure-1) and very high evaluation scores [(see Figure 2)](#figure-2).
+* Group A - These employees tend to work shorter hours, have slightly low satisfaction levels (see Figure 1) and low evaluation scores (see Figure 2).
+* Group B - These employees tend to work the longest hours, have very low satisfaction levels (see Figure 1) and very high evaluation scores (see Figure 2).
 
-|[Figure 1]()
-### Figure 1
-Scatter plot of satisfaction level by average monthly hours. The red reference line represents normal working hours of a regular full-time employee.
 
-|[Figure 2]()
-### Figure 2
-Scatter plot of last evaluation score by average monthly hours. The red reference line represents normal working hours of a regular full-time employee.
+![Figure 1](images/fig1_satisfaction_hours.png)
 
-The median working hours of employees who left and are working on 2 projects are consistent with Group A as shown in [Figure 3](#figure-3). These employees are likely fired for unsatisfactory performance and were given less work since they were on their way out. On the other hand, employees working on at least 4 projects who left the company have median monthly working hours consistent with Group B. These employees probably quit their job due to overwork.
+**Figure 1**. Scatter plot of satisfaction level by average monthly hours. The red reference line represents normal working hours of a regular full-time employee.
 
-|[Figure 3]()
-### Figure 3
-Bar chart of median average monthly hours by number of projects. The red reference line represents normal working hours of a regular full-time employee.
+![Figure 2](images/fig2_last_eval_hours.png)
 
-Analysis of satisfaction levels by tenure shows that four-year tenured employees have unusually low satisfaction levels consistent with that of Group B as shown in [Figure 4](#figure-4). Also, none of the long tenured (7 years+) employees left the company.
+**Figure 2**. Scatter plot of last evaluation score by average monthly hours. The red reference line represents normal working hours of a regular full-time employee.
 
-![Figure 4()
-### Figure 4
-Bar chart of satisfaction levels by tenure.
+The median working hours of employees who left and are working on 2 projects are consistent with Group A as shown in Figure 3. These employees are likely fired for unsatisfactory performance and were given less work since they were on their way out. On the other hand, employees working on at least 4 projects who left the company have median monthly working hours consistent with Group B. These employees probably quit their job due to overwork.
+
+![Figure 3](images/fig3_hours_num_project.png)
+
+**Figure 3**. Bar chart of median average monthly hours by number of projects. The red reference line represents normal working hours of a regular full-time employee.
+
+Analysis of satisfaction levels by tenure shows that four-year tenured employees have unusually low satisfaction levels consistent with that of Group B as shown in Figure 4. Also, none of the long tenured (7 years+) employees left the company.
+
+![Figure 4](images/fig4_satisfaction_tenure.png)
+
+**Figure 4**. Bar chart of satisfaction levels by tenure.
 
 Finally, only 1.7% of employees received promotion within the last 5 years, with most employees who worked the longest hours not getting promoted. These observations point to overworking as a major driver of employee turnover.
 
@@ -69,15 +70,13 @@ An XGBoost classifier model was selected to be evaluated on test data as it perf
 | F1 | 0.901 |
 | ROC AUC | 0.941 |
 
-### Table 1
-Evaluation scores of the classification model.
+**Table 1**. Evaluation scores of the classification model.
 
-The feature importance chart of the model shown in [Figure 5](#figure-5) shows that `tenure_years` has the highest importance, which may possibly be influenced by outliers, where none of the long-tenured (`tenure_years` >= 7) employees left the company.  The next two most important features are related to workload - `number_project` and `overworked`. This confirms that overworking is one of the main factors that drive employee turnover. The fourth most important feature is `last_evaluation`. Earlier EDA showed some positive correlation between `average_number_hours` and `last_evaluation`, suggesting employees that work longer hours tend to have higher evaluation scores.
+The feature importance chart of the model shown in Figure 5 shows that `tenure_years` has the highest importance, which may possibly be influenced by outliers, where none of the long-tenured (`tenure_years` >= 7) employees left the company.  The next two most important features are related to workload - `number_project` and `overworked`. This confirms that overworking is one of the main factors that drive employee turnover. The fourth most important feature is `last_evaluation`. Earlier EDA showed some positive correlation between `average_number_hours` and `last_evaluation`, suggesting employees that work longer hours tend to have higher evaluation scores.
 
+![Figure 5](images/fig5_feature_importances.png)
 
-[Figure 5]()
-### Figure 5
-Bar chart of the top 10 most important features.
+**Figure 5**. Bar chart of the top 10 most important features.
 
 ## Conclusion
 
