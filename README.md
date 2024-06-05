@@ -5,8 +5,8 @@ The main goal of this project is to develop a machine learning model to predict 
 ## Tools Used
 * Programming Language: **Python**
 * Data Science Libraries/Packages: **pandas, numpy, matplotlib, seaborn, scipy, scikit-learn, xgboost**
-* Statistical Methods: **Descriptive statistics, Chi-aquare goodness of fit test**
-* Machine learning algorithms: **Decision tree, Random forest, Gradient boosting (XGBoost)**
+* Statistical Methods: **Descriptive statistics, Chi-square goodness of fit test**
+* Machine Learning Algorithms: **Decision tree, Random forest, Gradient boosting (XGBoost)**
 
 ## Dataset Used
 
@@ -80,7 +80,7 @@ The feature importance chart of the model shown in Figure 5 shows that `tenure_y
 
 ## Conclusion
 
-Insights from exploratory data analysis and feature importances of the machine learning model confirm that employees are overworked. Woking long hours and contributing to several projects without receiving promotion is a characteristic of poor work culture. 
+Insights from exploratory data analysis and feature importance values of the machine learning model confirm that employees are overworked. Working long hours and contributing to several projects without receiving promotion is a characteristic of poor work culture. 
 
 The following actions are recommended to help improve employee retention.
 1. Limit the number of projects that employees need to work on.
